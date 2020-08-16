@@ -17,7 +17,6 @@ run:
     - |
       cd src-repo
       NODE_ENV=dev
-#npx audit-ci -l -a lodash --show-found false
       npx audit-ci -l
       echo "npm audit completed"
       npm ci
