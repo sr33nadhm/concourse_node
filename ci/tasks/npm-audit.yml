@@ -17,7 +17,7 @@ run:
     - |
       cd src-repo
       NODE_ENV=dev
-      npx audit-ci -l
+      npx audit-ci -l -a lodash --show-found false
       echo "npm audit completed"
       npm ci
       mv node_modules ../node_modules/node_modules

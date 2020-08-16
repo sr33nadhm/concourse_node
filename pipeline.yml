@@ -34,8 +34,23 @@ jobs:
         input_mapping:
           src-repo: src-repo-dev
         on_success:
-          run: echo "Success"
+          run:
+            path: sh
+            args:
+              - -exc
+              - |
+                echo "Success"
         on_failure:
-          run: echo "Failed"
+          run:
+            path: sh
+            args:
+              - -exc
+              - |
+                echo "Failed"
         on_abort:
-          run: echo "Aborted"
+          run:
+            path: sh
+            args:
+              - -exc
+              - |
+                echo "Aborted"
