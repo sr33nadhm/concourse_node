@@ -33,3 +33,9 @@ jobs:
         file: src-repo-dev/ci/tasks/npm-audit.yml
         input_mapping:
           src-repo: src-repo-dev
+        on_success:
+          run: echo "Success"
+        on_failure:
+          run: echo "Failed"
+        on_abort:
+          run: echo "Aborted"
