@@ -1,0 +1,21 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: node
+    tag: "lts"
+inputs:
+  - name: src-repo
+outputs:
+  - name: node_modules
+run:
+  path: sh
+  args:
+    - -exc
+    - |
+      cd src-repo
+      NODE_ENV=dev
+      npm install
+      echo "npm install completed"

@@ -1,0 +1,35 @@
+---
+groups:
+  - name: dev
+    jobs:
+      - build-dev
+
+resource_types:
+  - name: pull-request
+    type: docker-image
+    source:
+      repository: teliaoss/github-pr-resource
+
+resources:
+  - name: src-repo-dev
+    type: git
+    source:
+      username: "sr33nadhm"
+      password: "Sreenath2@"
+      uri: https://github.com/sr33nadhm/concourse_node.git
+      branch: master
+
+jobs:
+  - name: build-dev
+    serial: true
+    plan:
+      - get: src-repo-dev
+        trigger: false
+      - task: NPM-install
+        file: src-repo-dev/ci/tasks/npm-install.yml
+        input_mapping:
+          src-repo: src-repo-dev
+      - task: NPM-audit
+        file: src-repo-dev/ci/tasks/npm-audit.yml
+        input_mapping:
+          src-repo: src-repo-dev
